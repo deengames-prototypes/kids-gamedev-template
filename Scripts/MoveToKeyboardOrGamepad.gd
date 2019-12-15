@@ -9,7 +9,6 @@ const ZERO_VECTOR = Vector2(0, 0)
 
 var previously_facing = ""
 var previously_pressed_key = false
-var _audio_player
 
 func _physics_process(delta):
 	self._move_to_keyboard()
@@ -19,20 +18,32 @@ func _move_to_keyboard():
 	var new_facing = self.previously_facing
 	var pressed_key = false
 	
-	if Input.is_key_pressed(KEY_RIGHT) or Input.is_key_pressed(KEY_D):
-		velocity.x = 1
+	if Input.is_key_pressed(KEY_RIGHT) or Input.is_key_pressed(KEY_D) or Input.get_action_strength("ui_right") > 0:
+		if Input.get_action_strength("ui_right") > 0:
+			velocity.x = Input.get_action_strength("ui_right")
+		else:
+			velocity.x = 1
 		new_facing = "Right"
 		pressed_key = true
-	elif Input.is_key_pressed(KEY_LEFT) or Input.is_key_pressed(KEY_A):
-		velocity.x = -1
+	elif Input.is_key_pressed(KEY_LEFT) or Input.is_key_pressed(KEY_A) or Input.get_action_strength("ui_left") > 0:
+		if Input.get_action_strength("ui_left") > 0:
+			velocity.x = -Input.get_action_strength("ui_left")
+		else:
+			velocity.x = -1
 		new_facing = "Left"
 		pressed_key = true	
-	if Input.is_key_pressed(KEY_UP) or Input.is_key_pressed(KEY_W):
-		velocity.y = -1
+	if Input.is_key_pressed(KEY_UP) or Input.is_key_pressed(KEY_W) or Input.get_action_strength("ui_up") > 0:
+		if Input.get_action_strength("ui_up") > 0:
+			velocity.y = -Input.get_action_strength("ui_up")
+		else:
+			velocity.y = -1
 		new_facing = "Up"
 		pressed_key = true
-	elif Input.is_key_pressed(KEY_DOWN) or Input.is_key_pressed(KEY_S):
-		velocity.y = 1
+	elif Input.is_key_pressed(KEY_DOWN) or Input.is_key_pressed(KEY_S) or Input.get_action_strength("ui_down") > 0:
+		if Input.get_action_strength("ui_down") > 0:
+			velocity.y = Input.get_action_strength("ui_down")
+		else:
+			velocity.y = Input.get_action_strength("ui_down")
 		new_facing = "Down"
 		pressed_key = true
 
