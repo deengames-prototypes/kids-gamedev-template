@@ -17,7 +17,13 @@ _global_script_class_icons={
 
 config/name="Ninja Fireball"
 run/main_scene="res://Main.tscn"
+boot_splash/bg_color=Color( 0.388235, 1, 0.611765, 1 )
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=1280
+window/size/height=1024
 
 [input]
 
@@ -56,4 +62,5 @@ ui_down={
 
 [rendering]
 
+environment/default_clear_color=Color( 0.501961, 1, 0.380392, 1 )
 environment/default_environment="res://default_env.tres"
