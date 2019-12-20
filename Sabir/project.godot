@@ -15,9 +15,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Ninja Fireball"
+config/name="Ultimate Ninja Storm 4"
 run/main_scene="res://Main.tscn"
-boot_splash/bg_color=Color( 0.388235, 1, 0.611765, 1 )
 config/icon="res://icon.png"
 
 [autoload]
@@ -59,7 +58,7 @@ ui_down={
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":1.0,"script":null)
  ]
 }
-joypad_3={
+joypad_button_3={
 "deadzone": 0.5,
 "events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":1,"pressure":0.0,"pressed":false,"script":null)
  ]
@@ -71,5 +70,5 @@ joypad_3={
 
 [rendering]
 
-environment/default_clear_color=Color( 0.635294, 0.988235, 0.54902, 1 )
+environment/default_clear_color=Color( 0.333333, 1, 1, 1 )
 environment/default_environment="res://default_env.tres"
