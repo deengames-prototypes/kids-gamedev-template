@@ -14,6 +14,7 @@ const RIGHT_BUTTON_ID = LEFT_BUTTON_ID + 1
 const TURBO_BUTTON_ID = 2
 
 export var joypad_id = 0
+export var sprite:Texture
 export var tint:Color setget set_tint, get_tint
 
 var _velocity:Vector2 = Vector2.ZERO
@@ -32,6 +33,7 @@ func get_tint():
 func _ready():
 	$CollisionShape2D.visible = true
 	$TurboBar.max_value = MAX_TURBO_SECONDS
+	$Sprite.texture = sprite
 
 func _process(delta):
 	var rotation = (ROTATION_VELOCITY * delta)
