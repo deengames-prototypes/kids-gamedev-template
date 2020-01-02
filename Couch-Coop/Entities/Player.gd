@@ -38,6 +38,8 @@ func _process(delta):
 	
 	self.move_and_slide(_velocity * MOVE_SPEED)
 	
+func stop():
+	self._velocity = Vector2.ZERO
 
 func process_joypad(event):
 		_velocity = Vector2(0, 0)

@@ -9,12 +9,14 @@ func _ready():
 		if "Player" in child.name:
 			_player_joypad_map[child.joypad_id] = child
 
-func _unhandled_input(event):	
+func _unhandled_input(event):
 	if event is InputEventJoypadButton:
 		print(str(event.device) + " => " + str(event.button_index))
 		if event.is_pressed():
 			_current_event = event
 		else:
+			var joypad_id = _current_event.device
+			_player_joypad_map[joypad_id].stop()
 			_current_event = null # released
 			
 func _process(delta):
