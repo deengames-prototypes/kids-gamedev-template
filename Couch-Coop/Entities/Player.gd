@@ -43,7 +43,6 @@ func stop():
 	self._velocity = Vector2.ZERO
 
 func process_joypad(event, is_pressed):
-		_velocity = Vector2(0, 0)
 		var button = event as InputEventJoypadButton
 		
 		if is_pressed:

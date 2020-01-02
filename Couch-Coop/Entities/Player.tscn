@@ -11,8 +11,8 @@ radius = 25.0
 radius = 25.0
 
 [node name="Player" type="KinematicBody2D"]
-rotation = -0.0750644
-scale = Vector2( 0.999892, 0.999892 )
+rotation = 0.213022
+scale = Vector2( 0.999849, 0.999849 )
 script = ExtResource( 1 )
 tint = Color( 1, 0.772549, 0, 1 )
 

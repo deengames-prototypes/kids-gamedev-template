@@ -16,16 +16,18 @@ func _unhandled_input(event):
 		
 	if event is InputEventJoypadButton:
 		if event.is_pressed():
-			#_current_event = event
 			_current_events.append(event)
-		#elif _current_event != null:
-		elif len(_current_events) > 0:
-			var joypad_id = _current_event.device
-			_player_joypad_map[joypad_id].process_joypad(_current_event, false)
-			_current_event = null # released
+		else:
+			var joypad_id = event.device
+			for i in range(len(_current_events)):
+				var e = _current_events[i]
+				if e.device == event.device and e.button_index == event.button_index:
+					_player_joypad_map[joypad_id].process_joypad(event, false)
+					_current_events.remove(i)
+					break
 			
 func _process(delta):
-	if _current_event != null:
-		var joypad_id = _current_event.device
+	for event in _current_events:
+		var joypad_id = event.device
 		if joypad_id in _player_joypad_map:
-			_player_joypad_map[joypad_id].process_joypad(_current_event, true)
+			_player_joypad_map[joypad_id].process_joypad(event, true)
