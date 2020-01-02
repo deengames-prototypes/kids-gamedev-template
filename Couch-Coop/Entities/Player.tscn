@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Entities/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/spinner-1.png" type="Texture" id=2]
@@ -7,9 +7,12 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 25.0
 
+[sub_resource type="CircleShape2D" id=2]
+radius = 25.0
+
 [node name="Player" type="KinematicBody2D"]
-rotation = -2.0467
-scale = Vector2( 0.999981, 0.999981 )
+rotation = -0.0750644
+scale = Vector2( 0.999892, 0.999892 )
 script = ExtResource( 1 )
 tint = Color( 1, 0.772549, 0, 1 )
 
@@ -24,3 +27,9 @@ shape = SubResource( 1 )
 
 [node name="MoveToKeyboard" type="Node2D" parent="."]
 script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 2 )
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

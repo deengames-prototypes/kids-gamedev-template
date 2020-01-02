@@ -34,9 +34,9 @@ func _process(delta):
 	
 	if _turbo:
 		rotation *= TURBO_MULTIPLIER
+		_velocity *= 2
 	
 	self.rotation_degrees += rotation
-	
 	self.move_and_slide(_velocity * MOVE_SPEED)
 	
 func stop():

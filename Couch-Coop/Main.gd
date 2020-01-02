@@ -1,6 +1,7 @@
 extends Node2D
 
 var _current_event:InputEventJoypadButton
+var _current_events = []
 var _player_joypad_map = {}
 
 func _ready():
@@ -15,8 +16,10 @@ func _unhandled_input(event):
 		
 	if event is InputEventJoypadButton:
 		if event.is_pressed():
-			_current_event = event
-		elif _current_event != null:
+			#_current_event = event
+			_current_events.append(event)
+		#elif _current_event != null:
+		elif len(_current_events) > 0:
 			var joypad_id = _current_event.device
 			_player_joypad_map[joypad_id].process_joypad(_current_event, false)
 			_current_event = null # released
