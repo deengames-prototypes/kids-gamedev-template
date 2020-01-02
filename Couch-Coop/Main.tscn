@@ -8,6 +8,14 @@
 script = ExtResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 337, 321 )
+rotation = 528.059
+tint = Color( 0.827451, 0, 1, 1 )
+
+[node name="Player2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 352, 108 )
+rotation = 528.059
+tint = Color( 0, 1, 0.835294, 1 )
 
 [node name="Node2D" parent="." instance=ExtResource( 3 )]
 position = Vector2( 323.626, 214.796 )

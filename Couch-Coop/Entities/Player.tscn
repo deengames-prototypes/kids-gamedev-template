@@ -8,13 +8,17 @@
 radius = 25.0
 
 [node name="Player" type="KinematicBody2D"]
+rotation = 778.267
 script = ExtResource( 1 )
+tint = Color( 1, 0.772549, 0, 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 1, 0.772549, 0, 1 )
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource( 1 )
 
 [node name="MoveToKeyboard" type="Node2D" parent="."]
