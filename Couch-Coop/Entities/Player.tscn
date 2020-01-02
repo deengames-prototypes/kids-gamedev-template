@@ -7,17 +7,17 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 25.0
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 25.0
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 0, 0, 1 )
 
 [node name="Player" type="KinematicBody2D"]
-rotation = 0.213022
-scale = Vector2( 0.999849, 0.999849 )
+rotation = -18.8496
+scale = Vector2( 0.999848, 0.999848 )
 script = ExtResource( 1 )
 tint = Color( 1, 0.772549, 0, 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 1, 0.772549, 0, 1 )
+rotation = 1.49012e-08
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 2 )
 
@@ -28,8 +28,10 @@ shape = SubResource( 1 )
 [node name="MoveToKeyboard" type="Node2D" parent="."]
 script = ExtResource( 3 )
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 2 )
-[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[node name="TurboBar" type="ProgressBar" parent="."]
+margin_left = -20.0
+margin_top = -7.99361
+margin_right = 20.0
+margin_bottom = 7.9997
+custom_styles/fg = SubResource( 2 )
+value = 100.0

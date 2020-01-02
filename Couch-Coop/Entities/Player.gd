@@ -1,9 +1,11 @@
-tool
 extends KinematicBody2D
 
 const MOVE_SPEED = 200
 const ROTATION_VELOCITY = 360
 const TURBO_MULTIPLIER = 2
+const MAX_TURBO_SECONDS = 5
+# 2 => recharges 2x as fast as it dispenses
+const TURBO_RECHARGE_MULTIPLIER = 2
 
 const UP_BUTTON_ID = 12
 const DOWN_BUTTON_ID = UP_BUTTON_ID + 1
@@ -17,6 +19,7 @@ export var tint:Color setget set_tint, get_tint
 var _velocity:Vector2 = Vector2.ZERO
 var _tint:Color
 var _turbo:bool = false
+var _turbo_left = MAX_TURBO_SECONDS
 
 func set_tint(value):
 	if value != null and $Sprite != null:
@@ -28,16 +31,25 @@ func get_tint():
 	
 func _ready():
 	$CollisionShape2D.visible = true
+	$TurboBar.max_value = MAX_TURBO_SECONDS
 
 func _process(delta):
 	var rotation = (ROTATION_VELOCITY * delta)
 	
 	if _turbo:
-		rotation *= TURBO_MULTIPLIER
-		_velocity *= 2
+		if _turbo_left > 0:
+			rotation *= TURBO_MULTIPLIER
+			_velocity *= 2
+			_turbo_left -= delta # 1 per second
+		elif _turbo_left <= 0:
+			_turbo = false
+	else:
+		_turbo_left += TURBO_RECHARGE_MULTIPLIER * delta
+		_turbo_left = min(_turbo_left, MAX_TURBO_SECONDS)
 	
-	self.rotation_degrees += rotation
+	$Sprite.rotation_degrees += rotation
 	self.move_and_slide(_velocity * MOVE_SPEED)
+	$TurboBar.value = _turbo_left
 	
 func stop():
 	self._velocity = Vector2.ZERO
