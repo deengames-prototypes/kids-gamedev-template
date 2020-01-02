@@ -16,11 +16,11 @@ func _unhandled_input(event):
 			_current_event = event
 		else:
 			var joypad_id = _current_event.device
-			_player_joypad_map[joypad_id].stop()
+			_player_joypad_map[joypad_id].process_joypad(_current_event, false)
 			_current_event = null # released
 			
 func _process(delta):
 	if _current_event != null:
 		var joypad_id = _current_event.device
 		if joypad_id in _player_joypad_map:
-			_player_joypad_map[joypad_id].process_joypad(_current_event)
+			_player_joypad_map[joypad_id].process_joypad(_current_event, true)
