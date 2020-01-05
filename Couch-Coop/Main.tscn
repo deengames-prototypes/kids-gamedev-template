@@ -1,49 +1,53 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
-[ext_resource path="res://Entities/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/spinner-2.png" type="Texture" id=3]
+[ext_resource path="res://Entities/Block.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/spinner-3.png" type="Texture" id=4]
-[ext_resource path="res://Entities/Block.tscn" type="PackedScene" id=5]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
+[node name="Node2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 323.626, 214.796 )
+
+[node name="Node2D2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 184.725, 293.554 )
+
+[node name="Node2D3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 224.82, 143.197 )
+
+[node name="Node2D4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 608.588, 55.8469 )
+
+[node name="Node2D5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 554.174, 223.388 )
+
+[node name="Node2D6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 485.439, 230.548 )
+
+[node name="Node2D7" parent="." instance=ExtResource( 2 )]
+position = Vector2( 461.095, 183.292 )
+
+[node name="Node2D8" parent="." instance=ExtResource( 2 )]
+position = Vector2( 529.83, 107.398 )
+
+[node name="Players" type="Node2D" parent="."]
+
+[node name="Player" parent="Players" instance=ExtResource( 3 )]
 position = Vector2( 305.25, 90.2672 )
 rotation = 0.0
 scale = Vector2( 0.99985, 0.99985 )
-sprite = ExtResource( 3 )
-tint = Color( 1, 0, 0.843137, 1 )
+sprite = ExtResource( 4 )
+tint = Color( 0, 0.976471, 1, 1 )
 
-[node name="Player2" parent="." instance=ExtResource( 2 )]
+[node name="Player2" parent="Players" instance=ExtResource( 3 )]
 position = Vector2( 339.614, 370.931 )
 rotation = 0.0
 scale = Vector2( 0.999847, 0.999847 )
 joypad_id = 1
 sprite = ExtResource( 4 )
-tint = Color( 0, 0.835294, 1, 1 )
+tint = Color( 0, 1, 0.345098, 1 )
 
-[node name="Node2D" parent="." instance=ExtResource( 5 )]
-position = Vector2( 323.626, 214.796 )
-
-[node name="Node2D2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 184.725, 293.554 )
-
-[node name="Node2D3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 224.82, 143.197 )
-
-[node name="Node2D4" parent="." instance=ExtResource( 5 )]
-position = Vector2( 608.588, 55.8469 )
-
-[node name="Node2D5" parent="." instance=ExtResource( 5 )]
-position = Vector2( 554.174, 223.388 )
-
-[node name="Node2D6" parent="." instance=ExtResource( 5 )]
-position = Vector2( 485.439, 230.548 )
-
-[node name="Node2D7" parent="." instance=ExtResource( 5 )]
-position = Vector2( 461.095, 183.292 )
-
-[node name="Node2D8" parent="." instance=ExtResource( 5 )]
-position = Vector2( 529.83, 107.398 )
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true

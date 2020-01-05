@@ -5,8 +5,7 @@ var _current_events = []
 var _player_joypad_map = {}
 
 func _ready():
-	var children = self.get_children()
-	for child in children:
+	for child in $Players.get_children():
 		if "Player" in child.name:
 			_player_joypad_map[child.joypad_id] = child
 
@@ -31,3 +30,18 @@ func _process(delta):
 		var joypad_id = event.device
 		if joypad_id in _player_joypad_map:
 			_player_joypad_map[joypad_id].process_joypad(event, true)
+	
+	var total = Vector2.ZERO
+	var min_x = 0
+	var max_x = 0
+	
+	for player in $Players.get_children():
+		total += player.position
+		if player.position.x < min_x:
+			min_x = player.position.x
+		if player.position.x > max_x:
+			max_x = player.position.x
+	$Camera2D.position = total / $Players.get_child_count()
+	var distance = max_x - min_x
+	var zoom = 1 + (distance / 960.0)
+	$Camera2D.zoom = Vector2(zoom, zoom)
